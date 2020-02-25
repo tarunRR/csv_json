@@ -1,7 +1,6 @@
 import logging
 import pandas as pd
 from clean_data import Operations
-from aws_conn import Connection
 from exception import S3Error
 
 class Local:
@@ -34,12 +33,11 @@ class Local:
 
 class Aws:
 
-    def __init__(self, bucket):
+    def __init__(self, bucket_object):
         """
         Initializes the object.
         """
-        conn_object = Connection()
-        self.bucket_object = conn_object.get_bucket_obj(bucket)
+        self.bucket_object = bucket_object
 
     def get_files_list(self, direc):
         """
