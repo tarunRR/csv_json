@@ -54,6 +54,6 @@ class ConvertCsvToJson:
         if data.empty:
             return None
         return {"label":data.iloc[:, 3*(level)+1].iloc[0].strip(),
-        	"id":str(level_id).strip(),
+        	"id":str(int(level_id)).strip(),
         	"link":data.iloc[:, 3*(level+1)].iloc[0].strip(),
         	"children":self.add_nodes((level+1), data)}
