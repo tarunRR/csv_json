@@ -72,6 +72,8 @@ Test Cases Run
 
 * From csv_json directory use the following command to run test cases
 
+    *pip install requirements_test.txt*
+
     *python -m pytest tests/*
     
 
@@ -91,12 +93,16 @@ Sample Input
 ============
 
 ```
-'url'            'level 1 name' 'level 1 id' 'level 1 url'              
+'url'            'level 1 name' 'level 1 id' 'level 1 url'
+
 'www.sample.com' 'category 1'    12          'www.sample.com/category1' 
+
 'www.sample.com' 'category 2'    13          'www.sample.com/category2' 
 
 'level 2 name' 'level 2 id' 'level 2 url'])
+
 'product 1'    15           'www.sample.com/category1/product1'
+
 'product 3'    17           'www.sample.com/category2/product3'
 
 ```
