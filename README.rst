@@ -18,11 +18,11 @@ Usage
 
 * Install requirements using 
 
-  * pip install requirements.txt *
+  *pip install requirements.txt*
 
 * Configure your aws credentials using command
 
-  * aws configure *
+  *aws configure*
 
     AWS Access Key ID [None]: <your_key>
 
@@ -34,36 +34,36 @@ Usage
 
 * For aws run, from csv_json directory run the main.py file in source folder using command
 
-  * python source/main.py *
+  *python source/main.py*
 
 * You can also pass access_key and secret key as parameters to main file
 
-  * python source/main.py --access_key <your_key> --secret_key <secret key> *
+  *python source/main.py --access_key <your_key> --secret_key <secret key>*
 
 Local Run
 =========
 
 * For local run, from csv_json directory run the example.py file in local_example folder using command
 
-  * python local_example/example.py *
+  *python local_example/example.py*
 
 * If you want to run the code in your python console use the following lines
 
-  * import sys *
+  *import sys*
 
-  * sys.path.append(<path to source folder>) *
+  *sys.path.append(<path to source folder>)*
 
-  * from source.file_ops import Local *
+  *from source.file_ops import Local*
 
-  * from source.get_tree import ConvertCsvToJson *
+  *from source.get_tree import ConvertCsvToJson*
 
-  * data = Local().read_file(<path to data file>) *
+  *data = Local().read_file(<path to data file>)*
 
-  * csv_object = ConvertCsvToJson(data) *
+  *csv_object = ConvertCsvToJson(data)*
 
-  * out_json = csv_object.create_tree() *
+  *out_json = csv_object.create_tree()*
 
-  * print(out_json) *
+  *print(out_json)*
 
 Test Cases Run
 ==============
@@ -72,28 +72,33 @@ Test Cases Run
 
 * From csv_json directory use the following command to run test cases
 
-    * python -m pytest tests/ *
+    *python -m pytest tests/*
     
 
+Docker
+======
 
-AWS Connections
-===============
+* The code can be dockerised using the Dockerfile present in the code and can be ran as an ECS task
 
-* The code is integrated to AWS Elastic Beanstalk. The code reads CSV file from S3 (Simple Storage Services) buckets. After the conversion of CSV to nested json , it writes it back to S3. Also, it checks whether the CSV has the desired format of Parent and Child levels.
+* The code takes in files present in csv folder in an S3 bucket and store the output in json folder and moves the file to archive folder
 
-* All the S3 and Elastic Beanstalk related info are present in config file and and loaded from there
+* All the S3 related info are present in config file and loaded from there
 
-* The code is also integrated to a jenkins task which runs test cases on the build pushed and push it again to ealstic beanstalk
-
+* The code csn also be integrated to a jenkins task which runs test cases on the build push
 
 
 Sample Input
 ============
 
 ```
-'url'            'level 1 name' 'level 1 id' 'level 1 url'              'level 2 name' 'level 2 id' 'level 2 url'])
-'www.sample.com' 'category 1'    12          'www.sample.com/category1' 'product 1'    15           'www.sample.com/category1/product1'
-'www.sample.com' 'category 2'    13          'www.sample.com/category2' 'product 3'    17           'www.sample.com/category2/product3'
+'url'            'level 1 name' 'level 1 id' 'level 1 url'              
+'www.sample.com' 'category 1'    12          'www.sample.com/category1' 
+'www.sample.com' 'category 2'    13          'www.sample.com/category2' 
+
+'level 2 name' 'level 2 id' 'level 2 url'])
+'product 1'    15           'www.sample.com/category1/product1'
+'product 3'    17           'www.sample.com/category2/product3'
+
 ```
 
 Sample Output
@@ -102,10 +107,10 @@ Sample Output
 ```
 "[{"label": "category 1", "id": "12", "link": "www.sample.com/category1", 
 
-   "children": [{"label": "product 1", "id": "15", "link": "www.sample.com/category1/product1", "children": []}]}, 
+"children": [{"label": "product 1", "id": "15", "link": "www.sample.com/category1/product1", "children": []}]}, 
 
 {"label": "category 2", "id": "13", "link": "www.sample.com/category2", 
   
-   "children": [{"label": "product 3", "id": "17", "link": "www.sample.com/category2/product3", "children": []}]}]"
+"children": [{"label": "product 3", "id": "17", "link": "www.sample.com/category2/product3", "children": []}]}]"
 
 ```
