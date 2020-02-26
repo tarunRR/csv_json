@@ -10,7 +10,7 @@ It works on Windows, OSX and Linux platforms with Python 3.x versions.
 Orignal author: Tarun Kumar Singh
 Maintainer: Tarun Kumar Singh
 
-`Support and issues on Github <https://github.com/tarunRR/csv_to_json>`_.
+`Support and issues on Github <https://github.com/tarunRR/csv_json>`_.
 
 
 Usage
@@ -18,53 +18,62 @@ Usage
 
 * Install requirements using 
 
-  * pip install requirements.txt*
+  * pip install requirements.txt *
 
 * Configure your aws credentials using command
 
-  *aws configure*
+  * aws configure *
 
-    AWS Access Key ID [None]: *your_key*
+    AWS Access Key ID [None]: <your_key>
 
-    AWS Secret Access Key [None]: *secret key*
+    AWS Secret Access Key [None]: <secret key>
 
-    Default region name [None]: *region*
+    Default region name [None]: <region>
 
     Default output format [None]: json
 
-* For aws run, from csv_to_json directory run the main.py file in source folder using command
+* For aws run, from csv_json directory run the main.py file in source folder using command
 
-  *python .source/main.py
+  * python source/main.py *
 
 * You can also pass access_key and secret key as parameters to main file
 
-  *python ./source/main.py --access_key *your_key* --secret_key *secret key* *
+  * python source/main.py --access_key <your_key> --secret_key <secret key> *
 
 Local Run
 =========
 
-* For local run, from csv_to_json directory run the example.py file in local_example folder using command
+* For local run, from csv_json directory run the example.py file in local_example folder using command
 
-  *python ./local_example/example.py*
+  * python local_example/example.py *
 
 * If you want to run the code in your python console use the following lines
 
-  *import sys*
+  * import sys *
 
-  *sys.path.append(*path to source folder*)*
+  * sys.path.append(<path to source folder>) *
 
-  *from file_ops import Local*
+  * from source.file_ops import Local *
 
-  *from get_tree import ConvertCsvToJson*
+  * from source.get_tree import ConvertCsvToJson *
 
-  *data = Local().read_file(*path to data file*)*
+  * data = Local().read_file(<path to data file>) *
 
-  *csv_object = ConvertCsvToJson(data)*
+  * csv_object = ConvertCsvToJson(data) *
 
-  *out_json = csv_object.create_tree()*
+  * out_json = csv_object.create_tree() *
 
-  *print(out_json)*
+  * print(out_json) *
 
+Test Cases Run
+==============
+
+* Create virtual environment
+
+* From csv_json directory use the following command to run test cases
+
+    * python -m pytest tests/ *
+    
 
 
 AWS Connections
@@ -82,117 +91,21 @@ Sample Input
 ============
 
 ```
-Base URL,Level 1 - Name,Level 1 - ID,Level 1 - URL,Level 2 - Name,Level 2 - ID,Level 2 - URL,Level 3 - Name,Level 3 - ID,Level 3 - URL,Level 4 - Name,Level 4 - ID,Level 4 - URL
-https://groceries.morrisons.com/browse,THE BEST,178974,https://groceries.morrisons.com/browse/178974,,,,,,,,,
-,,,,,,,,,
-https://groceries.morrisons.com/browse,THE BEST,178974,https://groceries.morrisons.com/browse/178974,FRESH,178969,https://groceries.morrisons.com/browse/178974/178969,,,,,,
-,,,,,,,,,
-https://groceries.morrisons.com/browse,THE BEST,178974,https://groceries.morrisons.com/browse/178974,BAKERY & CAKES,178971,https://groceries.morrisons.com/browse/178974/178971,,,,,,
-https://groceries.morrisons.com/browse,THE BEST,178974,https://groceries.morrisons.com/browse/178974,BAKERY & CAKES,178971,https://groceries.morrisons.com/browse/178974/178971,BREAD & BREAD ROLLS,179023,https://groceries.morrisons.com/browse/178974/178971/179023,,,
-https://groceries.morrisons.com/browse,THE BEST,178974,https://groceries.morrisons.com/browse/178974,BAKERY & CAKES,178971,https://groceries.morrisons.com/browse/178974/178971,"CAKES, PIES & TARTS",179024,https://groceries.morrisons.com/browse/178974/178971/179024,,,
-https://groceries.morrisons.com/browse,THE BEST,178974,https://groceries.morrisons.com/browse/178974,BAKERY & CAKES,178971,https://groceries.morrisons.com/browse/178974/178971,CROISSANTS & BREAKFAST BAKERY,179025,https://groceries.morrisons.com/browse/178974/178971/179025,,,
-https://groceries.morrisons.com/browse,THE BEST,178974,https://groceries.morrisons.com/browse/178974,BAKERY & CAKES,178971,https://groceries.morrisons.com/browse/178974/178971,DESSERTS & PUDDINGS,179026,https://groceries.morrisons.com/browse/178974/178971/179026,,,
-https://groceries.morrisons.com/browse,THE BEST,178974,https://groceries.morrisons.com/browse/178974,BAKERY & CAKES,178971,https://groceries.morrisons.com/browse/178974/178971,"FRUITED BREAD, SCONES & HOT CROSS BUNS",179027,https://groceries.morrisons.com/browse/178974/178971/179027,,,
-,,,,,,,,,
-https://groceries.morrisons.com/browse,THE BEST,178974,https://groceries.morrisons.com/browse/178974,BAKERY & CAKES,178971,https://groceries.morrisons.com/browse/178974/178971,BREAD & BREAD ROLLS,179023,https://groceries.morrisons.com/browse/178974/178971/179023,BREAD,179078,https://groceries.morrisons.com/browse/178974/178971/179023/179078
-https://groceries.morrisons.com/browse,THE BEST,178974,https://groceries.morrisons.com/browse/178974,BAKERY & CAKES,178971,https://groceries.morrisons.com/browse/178974/178971,"CAKES, PIES & TARTS",179024,https://groceries.morrisons.com/browse/178974/178971/179024,CAKES,179079,https://groceries.morrisons.com/browse/178974/178971/179024/179079
+'url'            'level 1 name' 'level 1 id' 'level 1 url'              'level 2 name' 'level 2 id' 'level 2 url'])
+'www.sample.com' 'category 1'    12          'www.sample.com/category1' 'product 1'    15           'www.sample.com/category1/product1'
+'www.sample.com' 'category 2'    13          'www.sample.com/category2' 'product 3'    17           'www.sample.com/category2/product3'
 ```
 
 Sample Output
 ==============
 
 ```
-[
-  {
-    "label": "THE BEST",
-    "id": "178974",
-    "link": "https://groceries.morrisons.com/browse/178974",
-    "children": [
-      {
-        "label": "FRESH",
-        "id": "178969",
-        "link": "https://groceries.morrisons.com/browse/178974/178969",
-        "children": []
-      },
-      {
-        "label": "BAKERY & CAKES",
-        "id": "178971",
-        "link": "https://groceries.morrisons.com/browse/178974/178971",
-        "children": [
-          {
-            "label": "BREAD & BREAD ROLLS",
-            "id": "179023",
-            "link": "https://groceries.morrisons.com/browse/178974/178971/179023",
-            "children": [
-              {
-                "label": "BREAD",
-                "id": "179078",
-                "link": "https://groceries.morrisons.com/browse/178974/178971/179023/179078",
-                "children": []
-              }
-            ]
-          },
-          {
-            "label": "CAKES, PIES & TARTS",
-            "id": "179024",
-            "link": "https://groceries.morrisons.com/browse/178974/178971/179024",
-            "children": [
-              {
-                "label": "CAKES",
-                "id": "179079",
-                "link": "https://groceries.morrisons.com/browse/178974/178971/179024/179079",
-                "children": []
-              }
-            ]
-          },
-          {
-            "label": "CROISSANTS & BREAKFAST BAKERY",
-            "id": "179025",
-            "link": "https://groceries.morrisons.com/browse/178974/178971/179025",
-            "children": []
-          },
-          {
-            "label": "DESSERTS & PUDDINGS",
-            "id": "179026",
-            "link": "https://groceries.morrisons.com/browse/178974/178971/179026",
-            "children": []
-          },
-          {
-            "label": "FRUITED BREAD, SCONES & HOT CROSS BUNS",
-            "id": "179027",
-            "link": "https://groceries.morrisons.com/browse/178974/178971/179027",
-            "children": []
-          },
-          {
-            "label": "BREAD & BREAD ROLLS",
-            "id": "179023",
-            "link": "https://groceries.morrisons.com/browse/178974/178971/179023",
-            "children": [
-              {
-                "label": "BREAD",
-                "id": "179078",
-                "link": "https://groceries.morrisons.com/browse/178974/178971/179023/179078",
-                "children": []
-              }
-            ]
-          },
-          {
-            "label": "CAKES, PIES & TARTS",
-            "id": "179024",
-            "link": "https://groceries.morrisons.com/browse/178974/178971/179024",
-            "children": [
-              {
-                "label": "CAKES",
-                "id": "179079",
-                "link": "https://groceries.morrisons.com/browse/178974/178971/179024/179079",
-                "children": []
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+"[{"label": "category 1", "id": "12", "link": "www.sample.com/category1", 
+
+   "children": [{"label": "product 1", "id": "15", "link": "www.sample.com/category1/product1", "children": []}]}, 
+
+{"label": "category 2", "id": "13", "link": "www.sample.com/category2", 
+  
+   "children": [{"label": "product 3", "id": "17", "link": "www.sample.com/category2/product3", "children": []}]}]"
 
 ```

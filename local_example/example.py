@@ -1,7 +1,7 @@
 import sys
-sys.path.append('./source')
-from file_ops import Local
-from get_tree import ConvertCsvToJson
+sys.path.append('./')
+from source.file_ops import Local
+from source.get_tree import ConvertCsvToJson
 
 
 data = Local().read_file("./local_example/data_file.csv")
