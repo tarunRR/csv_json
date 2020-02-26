@@ -1,3 +1,4 @@
+""" Initialising config object """
 import configparser
 
 class Config:
@@ -10,7 +11,6 @@ class Config:
         """
         config = configparser.ConfigParser()
         config.read('./config/aws_config.ini')
-
         self.source_dir = config.get('aws_data', 'source_dir')
         self.output_dir = config.get('aws_data', 'output_dir')
         self.error_dir = config.get('aws_data', 'error_dir')

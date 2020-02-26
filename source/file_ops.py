@@ -1,10 +1,13 @@
+"""
+file ops module - for file operations such as read, write move
+"""
 import logging
 import pandas as pd
-from clean_data import Operations
-from exception import S3Error
+from source.clean_data import Operations
+from source.exception import S3Error
 
 class Local:
-
+    """ import file/data from local """
     def __init__(self):
         """
         Initializes the object.
@@ -32,7 +35,7 @@ class Local:
 
 
 class Aws:
-
+    """ Files operations on aws """
     def __init__(self, bucket_object):
         """
         Initializes the object.
@@ -47,7 +50,7 @@ class Aws:
         """
         try:
             files = self.bucket_object.objects.filter(Prefix=direc)
-            logging.info(f'Files present in directory : {files}')
+            logging.info(f'Files present in directory : {files} ')
         except Exception as ex:
             raise S3Error(f'Failed to parse the S3 bucket {self.bucket_object} Error:{str(ex)}')
         return files

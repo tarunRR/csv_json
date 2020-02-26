@@ -1,17 +1,17 @@
 """
-This file is the main file of the code module which calls all the functions and do all the operations
+This file is the main file of the code module
+which calls all the functions and do all the operations
 """
 import logging
 import traceback
 import sys
-sys.path.append('./source')
-#pylint: disable=wrong-import-position
-from configuration import Config
-from aws_conn import Connection
-from file_ops import Aws
-from get_tree import ConvertCsvToJson
-from exception import ValidationError, FileNotExist, error_message
-#pylint: enable=wrong-import-position
+sys.path.append('./')
+from source.configuration import Config
+from source.aws_conn import Connection
+from source.file_ops import Aws
+from source.get_tree import ConvertCsvToJson
+from source.exception import ValidationError, FileNotExist, error_message
+
 
 def all_operations(config, aws_obj):
     """
@@ -63,8 +63,8 @@ def all_operations(config, aws_obj):
         traceback.print_exc()
 
 if __name__ == '__main__':
-    config = Config()
-    conn_object = Connection()
-    bucket_obj = conn_object.get_bucket_obj(config.bucket)
-    aws_obj = Aws(bucket_obj)
-    all_operations(config, aws_obj)
+    CONFIG = Config()
+    CONN_OBJ = Connection()
+    BUCKET_OBJ = CONN_OBJ.get_bucket_obj(CONFIG.bucket)
+    AWS_OBJ = Aws(BUCKET_OBJ)
+    all_operations(CONFIG, AWS_OBJ)

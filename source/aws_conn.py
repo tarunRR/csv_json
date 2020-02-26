@@ -1,3 +1,4 @@
+""" dile to creae aws session and bucket object """
 import argparse
 import boto3
 class Connection:

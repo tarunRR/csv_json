@@ -1,6 +1,8 @@
+""" file for cleaning data """
 class Operations:
-
+    """ class for cleaning operations on data """
     def __init__(self, data):
+        """ Initialising class """
         self.data = data
     def remove_empty_rows(self):
         """

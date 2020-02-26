@@ -1,0 +1,43 @@
+============================= test session starts =============================
+platform win32 -- Python 3.7.2, pytest-5.3.1, py-1.8.1, pluggy-0.13.1
+rootdir: \\svvin203rmz0001.global.anz.com\sanjays$\Downloads\it\csv_json
+plugins: cov-2.8.1
+collected 10 items
+
+tests\test_aws_conn.py .                                                 [ 10%]
+tests\test_clean_data.py .                                               [ 20%]
+tests\test_file_ops_aws.py .....                                         [ 70%]
+tests\test_get_tree.py .                                                 [ 80%]
+tests\test_main.py ..                                                    [100%]
+
+============================== warnings summary ===============================
+C:\Users\sanjays\AppData\Roaming\Python\Python37\site-packages\boto\plugin.py:40
+  C:\Users\sanjays\AppData\Roaming\Python\Python37\site-packages\boto\plugin.py:40: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+    import imp
+
+C:\Users\sanjays\AppData\Roaming\Python\Python37\site-packages\moto\cloudformation\parsing.py:407
+  C:\Users\sanjays\AppData\Roaming\Python\Python37\site-packages\moto\cloudformation\parsing.py:407: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+    class ResourceMap(collections.Mapping):
+
+tests\test_config.py:2
+  \\svvin203rmz0001.global.anz.com\sanjays$\Downloads\it\csv_json\tests\test_config.py:2: PytestCollectionWarning: cannot collect test class 'TestConfig' because it has a __init__ constructor (from: tests/test_config.py)
+    class TestConfig:
+
+P:\Downloads\it\csv_json\tests\test_config.py:2
+  P:\Downloads\it\csv_json\tests\test_config.py:2: PytestCollectionWarning: cannot collect test class 'TestConfig' because it has a __init__ constructor (from: tests/test_file_ops_aws.py)
+    class TestConfig:
+
+P:\Downloads\it\csv_json\tests\test_config.py:2
+  P:\Downloads\it\csv_json\tests\test_config.py:2: PytestCollectionWarning: cannot collect test class 'TestConfig' because it has a __init__ constructor (from: tests/test_main.py)
+    class TestConfig:
+
+C:\Users\sanjays\AppData\Roaming\Python\Python37\site-packages\_pytest\cacheprovider.py:124
+  C:\Users\sanjays\AppData\Roaming\Python\Python37\site-packages\_pytest\cacheprovider.py:124: PytestCacheWarning: could not create cache path \\svvin203rmz0001.global.anz.com\sanjays$\Downloads\it\csv_json\.pytest_cache\v\cache\stepwise
+    self.warn("could not create cache path {path}", path=path)
+
+C:\Users\sanjays\AppData\Roaming\Python\Python37\site-packages\_pytest\cacheprovider.py:124
+  C:\Users\sanjays\AppData\Roaming\Python\Python37\site-packages\_pytest\cacheprovider.py:124: PytestCacheWarning: could not create cache path \\svvin203rmz0001.global.anz.com\sanjays$\Downloads\it\csv_json\.pytest_cache\v\cache\nodeids
+    self.warn("could not create cache path {path}", path=path)
+
+-- Docs: https://docs.pytest.org/en/latest/warnings.html
+======================= 10 passed, 7 warnings in 9.25s ========================
