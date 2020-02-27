@@ -38,7 +38,7 @@ Usage
 
 * You can also pass access_key and secret key as parameters to main file
 
-  *python source/main.py --access_key <your_key> --secret_key <secret key>*
+  *python source/main.py --access_key_arg <your_key> --secret_key_arg <secret key>*
 
 Local Run
 =========
