@@ -1,5 +1,4 @@
 pipeline {
-
     options {
         disableConcurrentBuilds()
         buildDiscarder(logRotator(numToKeepStr: '3', artifactNumToKeepStr: '3'))
@@ -7,7 +6,7 @@ pipeline {
 
     agent {
         node {
-            label 'csv_json'
+            label '<provide a label>'
         }
     }
 
@@ -19,7 +18,7 @@ pipeline {
                  secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                     withDockerContainer(image: '728937462937.dkr.ecr.ap-south-1.amazonaws.com/python-3.7:latest') {
                         script {
-                            sh 'virtualenv venv && source venv/bin/activate && cd tests && pip install -r test_requirements.txt && python -m pytest tests/'
+                            sh 'virtualenv venv && source venv/bin/activate && pip install -r test_requirements.txt && cd tests && python -m pytest tests/'
                         }
                     }
                 }
@@ -31,7 +30,7 @@ pipeline {
                         SERVICE_NAME='csvtojson'
             }
             when {
-                branch 'develop'
+                branch 'master'
             }
 
             steps {
@@ -40,20 +39,18 @@ pipeline {
                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                     sh '$(aws ecr get-login --region ap-south-1 --no-include-email )'
                     script {
-
-											
-					    sh 'docker build -t 728937462937.dkr.ecr.ap-south-1.amazonaws.com/${DOMAIN}/${SERVICE_NAME}:dev -f envsetup/docker/Dockerfile .'
-					    sh 'docker push 728937462937.dkr.ecr.ap-south-1.amazonaws.com/${DOMAIN}/${SERVICE_NAME}:dev'
-						
-					}
-				}
-			}
+            sh 'docker build -t 728937462937.dkr.ecr.ap-south-1.amazonaws.com/${DOMAIN}/${SERVICE_NAME}:dev -f Dockerfile .'
+            sh 'docker push 728937462937.dkr.ecr.ap-south-1.amazonaws.com/${DOMAIN}/${SERVICE_NAME}:dev'
+            sh 'aws ecs register-task-definition --cli-input-json file://create-ecs-task-dev.json
+            }
+            }
         }
-		
-		stage('CleanWorkspace') {
-			steps {
-					cleanWs()
-			}
-		}
+        }
+        
+        stage('CleanWorkspace') {
+        steps {
+            cleanWs()
+        }
+    }
     }
 }
